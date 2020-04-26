@@ -1,7 +1,8 @@
 target/
-!.mvn/wrapper/maven-wrapper.jar
+#!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+/.mvn/wrapper/maven-wrapper.jar
 
 /src/main/resources/public/
 
