@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
+import { Title } from '@angular/platform-browser';
 import { Sort } from '@angular/material/sort';
 
 import { ApiService } from './app.service';
@@ -14,6 +15,7 @@ import { Tester } from './interfaces/tester';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+	readonly appName = 'Tester finder';
 	readonly allOption = 'ALL';
 	readonly displayedColumns: string[] = ['firstName', 'lastName', 'bugs'];
 
@@ -30,10 +32,13 @@ export class AppComponent implements OnInit, OnDestroy {
 	@ViewChild('allCountries') private allCountriesOption: MatOption;
 	@ViewChild('allDevices') private allDevicesOption: MatOption;
 
-	constructor(private readonly apiService: ApiService) {
+	constructor(private readonly apiService: ApiService,
+				private readonly titleService: Title) {
 	}
 
 	ngOnInit(): void {
+		this.titleService.setTitle(this.appName);
+
 		this.countriesSubscription = this.apiService.getCountries()
 			.subscribe(countries => this.countries = countries);
 		this.devicesSubscription = this.apiService.getDevices()
@@ -84,7 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	onSort($event: Sort) {
+	onSort($event: Sort): void {
 		if ($event.direction) {
 			this.testers = [...this.testers.sort((a, b) =>
 				$event.direction === 'asc' ? a.bugs - b.bugs : b.bugs - a.bugs)];
