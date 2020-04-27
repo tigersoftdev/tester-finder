@@ -37,7 +37,8 @@
 	</section>
 
 	<section class="results">
-		<table mat-table [dataSource]="testers" class="mat-elevation-z8">
+		<table mat-table [dataSource]="testers" class="mat-elevation-z8"
+			   matSort (matSortChange)="onSort($event)">
 
 			<ng-container matColumnDef="firstName">
 				<th mat-header-cell *matHeaderCellDef>Name</th>
@@ -50,7 +51,7 @@
 			</ng-container>
 
 			<ng-container matColumnDef="bugs">
-				<th mat-header-cell *matHeaderCellDef>Bugs found</th>
+				<th mat-header-cell *matHeaderCellDef mat-sort-header>Experience</th>
 				<td mat-cell *matCellDef="let element">{{element.bugs}}</td>
 			</ng-container>
 

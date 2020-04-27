@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { Sort } from '@angular/material/sort';
 
 import { ApiService } from './app.service';
 import { Observable } from 'rxjs';
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		this.countries$ = this.apiService.getCountries();
 		this.devices$ = this.apiService.getDevices();
+		this.find();
 	}
 
 	find(): void {
@@ -55,4 +57,10 @@ export class AppComponent implements OnInit {
 		}
 	}
 
+	onSort($event: Sort) {
+		if ($event.direction) {
+			this.testers = [...this.testers.sort((a, b) =>
+				$event.direction === 'asc' ? a.bugs - b.bugs : b.bugs - a.bugs)];
+		}
+	}
 }

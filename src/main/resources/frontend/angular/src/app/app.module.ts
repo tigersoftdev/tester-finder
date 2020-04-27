@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { ApiService } from './app.service';
@@ -23,7 +24,8 @@ import { API_URL } from './app.tokens';
 		FormsModule,
 		MatSelectModule,
 		MatTableModule,
-		MatButtonModule
+		MatButtonModule,
+		MatSortModule,
 	],
 	providers: [ApiService,
 		{provide: API_URL, useValue: environment.apiUrl}],
