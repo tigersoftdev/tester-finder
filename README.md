@@ -2,7 +2,7 @@
 
 ### Setup guide
 
-##### To run application ensure you have Java Development Kit (at least 1.8) installed on your machine.
+##### To run application ensure you have Java Development Kit (at least 1.8) installed on your machine and JAVA_HOME environment variable set to point your JDK installation folder.
 
 1. Install [Maven](https://maven.apache.org/install.html).
 2. Clone this repository to your local disk.
