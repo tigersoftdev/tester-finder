@@ -24,10 +24,14 @@ export class ApiService {
 	}
 
 	getTesters(countries: string[], deviceIds: number[]): Observable<Tester[]> {
-		const countriesParam = countries ? countries.join(',') : '';
-		const devicesParam = deviceIds ? deviceIds.join(',') : '';
+		const countriesParam = this.getUrlParam(countries);
+		const devicesParam = this.getUrlParam(deviceIds);
 		const path = `${this.apiUrl}/testers?countries=${countriesParam}&devices_ids=${devicesParam}`;
 		return this.http.get<Tester[]>(path);
+	}
+
+	private getUrlParam(array: Array<string | number>): string {
+		return array ? array.join(',') : '';
 	}
 
 }
